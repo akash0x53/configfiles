@@ -1,0 +1,25 @@
+[user]
+	email = akash0x53s@gmail.com
+	name = Akash Shende
+
+[core]
+	editor = vim
+
+[alias]
+	stat = status
+	pul = pull
+	branches = branch -va
+
+[color]
+	ui = auto
+
+[color "branch"]
+	current = green
+	local = blue
+	remote = yellow
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+
