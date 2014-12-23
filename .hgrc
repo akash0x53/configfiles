@@ -1,0 +1,28 @@
+# example config (see "hg help config" for more info)
+
+[ui]
+username = Akash Shende<akash0x53s@gmail.com>
+editor=vim
+
+[extensions]
+pager =
+progress =
+color =
+rebase =
+strip=
+histedit=
+record=
+
+
+[color]
+mode = auto
+
+
+[color "status"]
+modified = blue bold 
+added    = green bold
+removed  = red bold 
+deleted  = cyan bold
+
+[color "diff"]
+inserted = green
