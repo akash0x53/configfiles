@@ -15,7 +15,7 @@ record=
 
 
 [color]
-mode = auto
+mode = terminfo
 
 
 [color "status"]
@@ -26,3 +26,8 @@ deleted  = cyan bold
 
 [color "diff"]
 inserted = green
+
+[color "branch"]
+current = green
+active  = None
+
