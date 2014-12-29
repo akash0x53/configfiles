@@ -31,3 +31,6 @@ inserted = green
 current = green
 active  = None
 
+[alias]
+stat=status -m -a -r
+
