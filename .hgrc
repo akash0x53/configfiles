@@ -13,10 +13,8 @@ strip=
 histedit=
 record=
 
-
 [color]
 mode = terminfo
-
 
 [color "status"]
 modified = blue bold 
@@ -33,4 +31,5 @@ active  = None
 
 [alias]
 stat=status -m -a -r
-
+annotate=annotate -c -u
+graph=log --graph
