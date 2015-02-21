@@ -178,4 +178,4 @@ bindsym XF86AudioPrev exec playerctl previous
 #bindsym $mod+Ctrl+l exec --no-startup-id ~/.i3/lock_screen.sh
 exec xautolock -time 15 -locker ~/.i3/lock_screen.sh
 
-bindsym Print exec --no-startup-id scrot '%Y-%m-%d_%H\:%M\:%S_$wx$h_screenshot.png' -e 'mv $f ~/Pictures/'
+bindsym Print exec --no-startup-id scrot '%Y-%m-%d_%H %M %S_$wx$h_screenshot.png' -e 'mv $f ~/Pictures/'

@@ -9,6 +9,7 @@
 	stat = status
 	pul = pull
 	branches = branch -va
+	push = push -v
 
 [color]
 	ui = auto
@@ -23,3 +24,14 @@
 	changed = yellow
 	untracked = cyan
 
+[sendemail]
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = akash0x53s@gmail.com
+	smtpserverport = 587
+	smtpsslcertpath = '/etc/ssl/certs'
+	suppresscc = self
+[push]
+	default = matching
+[merge]
+	tool = meld

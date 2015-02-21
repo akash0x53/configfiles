@@ -11,6 +11,7 @@ nnoremap <leader>] :!pylint -E %<CR>
 
 "set foldmethod=indent
 set foldlevel=-1
+"set expandtab
 set tabstop=4
 set shiftwidth=4
 "set expandtab
@@ -57,3 +58,12 @@ func StripTrailingWS()
 endfunc
 
 noremap <leader>w :call StripTrailingWS()<CR>
+
+" put license, authorname (myname) :D in newly created Js files
+
+autocmd! BufNewFile *.js
+      \ exe "normal O/*\rCoffee - Collaborative Online File Editor.".
+	  \ "\r\rDate: " . strftime("%B %d %Y").
+	  \ "\rAuthor: Akash Shende <akash@anoosmar.com>"
+	  \ "\r\rCopyright (c) 2015 Vaultize"
+      \ "\r\r/\r\r"

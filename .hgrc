@@ -12,6 +12,7 @@ rebase =
 strip=
 histedit=
 record=
+;glog=
 
 [color]
 mode = terminfo
@@ -33,3 +34,4 @@ active  = None
 stat=status -m -a -r
 annotate=annotate -c -u
 graph=log --graph
+push=push -b default
