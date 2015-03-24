@@ -9,6 +9,7 @@
 # use CentOS 7 as base image.
 # This downloads CentOS-7 image from docker-hub. It takes some time.
 FROM centos:7
+MAINTAINER  Akash Shende <akash@anoosmar.com>
 
 # update YUM repo (Optional)
 RUN yum update
