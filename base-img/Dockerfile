@@ -12,32 +12,18 @@ FROM centos:7
 MAINTAINER  Akash Shende <akash@anoosmar.com>
 
 # update YUM repo (Optional)
-RUN yum update
-
-# install essential development tools
-RUN yum groupinstall -y "Development tools"
-RUN yum install -y vim sudo ntp wget
-
-# Essential monitoring tools
-RUN yum install -y htop iotop iftop ibmonitor lsof
-
-RUN yum install -y mt-st system-config-network-tui
-
-# Install OpenSSL libs
-RUN yum install -y openssl-devel* zlib-*
-
-# System tools
-RUN yum install memtester numactl monit ssmtp sysstat cifs-utils xfsprog ntfs-3g
-
-# Essential libs
-RUN yum -y libxml2-devel libxslt-devel openldap openldap-devel
-
-# Important Libraries for Office server & passthru service.
-RUN yum -y install libjpeg-devel giflib-devel freetype-devel
-RUN yum -y install swftools
-RUN yum -y install ImageMagick
-RUN yum -y install xpdf
-
-RUN yum -y install libedit libedit-devel libgssapi pam-devel # required by OpenSSH 6.x
-RUN yum -y install libsmbclient
-RUN yum -y upgrade libsmbclient
+RUN yum update &&\
+	yum groupinstall -y "Development tools" &&\
+	yum install -y vim sudo ntp wget &&\
+	yum install -y htop iotop iftop ibmonitor lsof &&\
+	yum install -y mt-st system-config-network-tui &&\
+	yum install -y openssl-devel* zlib-* &&\
+	yum install memtester numactl monit ssmtp sysstat cifs-utils xfsprog ntfs-3g &&\
+	yum -y libxml2-devel libxslt-devel openldap openldap-devel &&\
+	yum -y install libjpeg-devel giflib-devel freetype-devel &&\
+	yum -y install swftools &&\
+	yum -y install ImageMagick &&\
+	yum -y install xpdf&&\
+	yum -y install libedit libedit-devel libgssapi pam-devel &&\ # required by OpenSSH 6.x
+	yum -y install libsmbclient &&\
+	yum -y upgrade libsmbclient &&\
