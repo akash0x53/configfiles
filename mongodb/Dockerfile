@@ -2,26 +2,22 @@
 
 #Mongodb dockerization
 
-FROM	centos
+FROM	centos:6
 MAINTAINER	Akash Shende <akash@anoosmar.com>
 
 # where db resides
 RUN mkdir -p /data/db
 
-# Place to keep MongoDB binaries
-RUN mkdir -p /opt/mongodb
-
 # copy mongo*.tar.gz from host machine to container
 COPY mongodb-* /opt/mongodb/
 
-# change working dir
-WORKDIR /opt/mongodb/
+# /data/db:         Volume stores keep db on host machine
+# /opt/config:      Read mongodb settings from here.
+# /var/log/mongodb: Keep mongodb logs on host machine too.
 
-# this changes mongodb's annoying long name, keep it short /opt/mongodb/bin
-WORKDIR /opt/mongodb
+VOLUME ["/data/db/", "/opt/config/", "/var/log/mongodb/"]
 
 EXPOSE 27017
 
-CMD ["--port 27017 --dbpath /data/db --smallfiles"]
-
 ENTRYPOINT /opt/mongodb/bin/mongod
+CMD ["--config /opt/config/mongodb.conf"]
