@@ -6,13 +6,15 @@
 # Date  : 16th March, 2015
 #
 
-# use CentOS 7 as base image.
-# This downloads CentOS-7 image from docker-hub. It takes some time.
-FROM centos:7
+# use CentOS 6 as base image - CentOS 7 has Systemd issues
+# This downloads CentOS-6 image from docker-hub. It takes some time.
+FROM centos:6
 MAINTAINER  Akash Shende <akash@anoosmar.com>
 
 # update YUM repo (Optional)
 RUN yum -y update &&\
+	yum -y install epel-release &&\
+	yum -y update &&\
 	yum groupinstall -y "Development tools" &&\
 	yum -y install vim\
 		 sudo\
@@ -50,4 +52,5 @@ RUN yum -y update &&\
 		 libgssapi\
 		 pam-devel\
 		 libsmbclient\
-		 python-devel
+		 python-devel\
+		 net-tools
