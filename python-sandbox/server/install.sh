@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Author: Akash Shende <akash@anoosmar.com
+
 
 for zp in *.zip;
        do

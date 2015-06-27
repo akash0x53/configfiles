@@ -9,7 +9,7 @@ tag=$1
 repo="vaultize"
 shift
 
-if [ ! -d mongodb-1* ]; then
+if [ ! -d mongodb-* ]; then
 	echo "MongoDB Not Found in Current Directory."\
 		"Download mongodb and extract here and run this script"
 	exit 1
