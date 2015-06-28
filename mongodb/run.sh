@@ -21,6 +21,6 @@ docker run -d\
 	   -v /data/db:/data/db\
 	   -v /opt/config:/opt/config\
 	   -v /var/log/mongodb:/var/log/mongodb\
-	   -p 27017:27017\
-	   --name vaultize_mongodb\
+	   -p 127.0.0.1:27017:27017\
+	   --name db\
 	      $repo:$tag
