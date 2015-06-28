@@ -57,3 +57,5 @@ RUN yum -y update &&\
 		ImageMagick\
 		xpdf
 
+RUN groupadd -r web &&\
+    useradd -r -m -g web web &&\
