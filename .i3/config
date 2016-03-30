@@ -177,5 +177,6 @@ bindsym XF86AudioPrev exec playerctl previous
 #custom bindings
 #bindsym $mod+Ctrl+l exec --no-startup-id ~/.i3/lock_screen.sh
 exec xautolock -time 15 -locker ~/.i3/lock_screen.sh
+exec --no-startup-id /usr/bin/unity-settings-daemon
 
 bindsym Print exec --no-startup-id scrot '%Y-%m-%d_%H %M %S_$wx$h_screenshot.png' -e 'mv $f ~/Pictures/'

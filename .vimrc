@@ -15,7 +15,7 @@ set foldlevel=-1
 set tabstop=4
 set shiftwidth=4
 "set expandtab
-colorscheme murphy
+colorscheme torte
 
 "call pathogen#infect()
 syntax on
@@ -67,3 +67,6 @@ autocmd! BufNewFile *.js
 	  \ "\rAuthor: Akash Shende <akash@anoosmar.com>"
 	  \ "\r\rCopyright (c) 2015 Vaultize"
       \ "\r\r/\r\r"
+
+autocmd FileType python setlocal noet sw=4 ts=4 
+set viminfo='20,<1000,s1000

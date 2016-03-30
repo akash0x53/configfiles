@@ -10,8 +10,10 @@ progress =
 color =
 rebase =
 strip=
+mq=
 histedit=
 record=
+shelve=
 ;glog=
 
 [color]
