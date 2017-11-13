@@ -14,7 +14,8 @@
 % .tex file. The resume.cls file provides the resume style used for structuring the
 % document.
 %
-% compiled on:https://www.overleaf.com/4003767hnddyh#/11654628/
+% https://www.sharelatex.com/project/54c10798187b747c47914966
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
@@ -22,6 +23,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass{resume} % Use the custom resume.cls style
+\usepackage{sans}
 
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 
@@ -32,7 +34,7 @@
 \begin{document}
 
 \begin{rSection}{Summary}
-Over 2 years working experience of software design \& development and DevOps. Developing complex modules to distributed applications in Python \& C. Experience of cutting edge deployment like Docker \& Ansible. 
+3+ years working experience of software design \& development and DevOps. Experienced in writing standalone apps to distributed modules in Python \& C. Hands-on experience in cutting edge deployment tools like Docker, Ansible. 
 \end{rSection}
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
@@ -52,19 +54,23 @@ Percentage: 62.40\%
 
 \begin{rSection}{Experience}
 
-\begin{rSubsection}{Vaultize Technologies}{Oct 2013 - Present}{Python Full Stack Developer}{Pune, India}
-\item Using agile development methodology.
-\item Developed the most efficient PST files backup solution by hacking PST file.
-\item Designed \& developed ICAP agent to communicate with Antivirus \& DLP engines.
-\item Developed \& maintains Eventhub. Eventhub is distributed, asynchronous event router system over HTTP.
-\item Designed \& developed Resumable file upload protocol - allows user to upload large files over HTTP with pause-resume ability.
-\item Work as DevOps to build Docker images, configure application server (uWsgi) that gave ability to handle thousands of concurrent requests, wrote Ansible recipes.
-\item Designed and implemented Continuous Integration system using Jenkins, Ansible and Selenium.
+\begin{rSubsection}{Vaultize Technologies}{Oct 2013 - Present}{Python Developer}{Pune, India}
+
+\item Developed the most efficient PST backup solution.
+\item Developed ICAP agent to communicate with Antivirus \& DLP engines.
+\item Developed Eventhub, which is message passing system designed for Vaultize.
+\item Developed Resumable file upload protocol - allowed user to upload large files with pause-resume ability.
+\item Volunteered to assess \& fix vulnerabilities.
+\item Worked with DevOps team to build Docker images, and configured application server (uWsgi).
+\item Worked with DevOps team to optimize System configurations.
+\item Built Jenkins pipeline to generate daily builds and execute automated test cases.
+\item Built infrastructure with Docker, Vagrant \& Ansible for QA automation.
 \end{rSubsection}
 
-\begin{rSubsection}{Individual FOSS Contribution}{2014-2015}{}{}
+\begin{rSubsection}{Individual FOSS Contribution}{2014-Present}{On github.com/akash0x53}{}
 \item Contribution to Linux Kernel (signed as akash0x53s@gmail.com).
-\item Contribution to more than 10 open source project on Github (github.com/akash0x53).
+\item Sent PR to add support for SameSiteCookie in core CPython \& web.py framework.
+\item Contribution to more than 10 open source projects.
 \end{rSubsection}
 
 %------------------------------------------------
@@ -79,11 +85,11 @@ Percentage: 62.40\%
 \begin{rSection}{Technical Skills}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Computer Languages & Python, JavaScript, C;\\
-Web Technologies \& Frameworks & HTML5, jQuery, AngularJS, WebPy, NodeJS; \\
-DevOps & Nginx, uWsgi, Docker, Ansible, Jenkins Pipeline; \\
-Protocols \& APIs & JSON, REST, ICAP, AWS-SNS; \\
-Databases & MongoDB, MySQL; \\
+Computer Languages & Python, C, Go;\\
+Web Technologies \& Frameworks & HTML5, jQuery, AngularJS, WebPy; \\
+DevOps & Docker, Vagrant, Ansible; \\
+Protocols \& APIs & HTTP, ICAP; \\
+Databases & MongoDB; \\
 Certificate & MongoDB for Developers (MongoDB University).
 \end{tabular}
 
@@ -102,5 +108,4 @@ Certificate & MongoDB for Developers (MongoDB University).
 %----------------------------------------------------------------------------------------
 
 \end{document}
-
 

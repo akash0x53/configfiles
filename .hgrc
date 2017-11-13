@@ -14,6 +14,8 @@ mq=
 histedit=
 record=
 shelve=
+convert=
+purge=
 ;glog=
 
 [color]
