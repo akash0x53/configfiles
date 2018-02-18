@@ -8,7 +8,7 @@
 
 #pgrep i3lock && sleep 300; pgrep i3lock && sudo pm-suspend
 take_photo(){
-	streamer -f jpeg -o "/home/akash/Pictures/who_logged_in/That_was_on_$(date +%Y-%m-%d_%H-%M).jpeg"
+	streamer -s 1024x768 -j 100 -f jpeg -o "/home/akash/Pictures/who_logged_in/That_was_on_$(date +%Y-%m-%d_%H-%M).jpeg"
 }
 trap take_photo EXIT
 scrot /tmp/screen.png
