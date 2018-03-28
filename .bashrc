@@ -41,7 +41,7 @@ esac
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
-
+color_prompt=yes
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -53,8 +53,12 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+git_branch(){
+	git branch 2>/dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/(\1)/"
+}
+color_prompt=yes
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[33m\]$(git_branch)\[\033[0m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -273,13 +277,6 @@ genpass()
 	echo "${FOR}: $paswd" >> ~/.pass
 }
 
-vzvpn()
-{
-	VPN_CONF_DIR=~/vpn-config
-	sudo openvpn --config $VPN_CONF_DIR/vltz-router2-TCP-1194-akash.shende-config.ovpn \
-	 --pkcs12 $VPN_CONF_DIR/vltz-router2-TCP-1194-akash.shende.p12 \
-	 --tls-auth $VPN_CONF_DIR/vltz-router2-TCP-1194-akash.shende-tls.key
-}
-
 
 PATH="$PATH:/home/akash/.mos/bin"
+export HOSTALIASES=~/.hosts
