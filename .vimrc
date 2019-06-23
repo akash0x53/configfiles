@@ -78,5 +78,5 @@ autocmd! BufNewFile *.robot
 			\ "*** Variables ***\r\r".
 			\ "*** Keywords ***\r"
 
-autocmd FileType python setlocal noet sw=4 ts=4 
+autocmd FileType python setlocal et sw=4 ts=4 
 set viminfo='20,<1000,s1000

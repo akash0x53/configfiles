@@ -112,6 +112,7 @@ fi
 
 alias ls='ls -lFsth --color="auto"'
 alias ps='ps -f'
+alias rm='rm -i'
 alias emacs='emacs -nw'
 alias fucking='sudo'
 export JAVA_HOME="/usr/bin/java"
@@ -168,9 +169,6 @@ ejectdev() {
 
 mountdev() {
 	udisksctl mount -b $1
-}
-vzcode() {
-	cd /home/akash/Vaultize/codebase
 }
 
 hgport() {
