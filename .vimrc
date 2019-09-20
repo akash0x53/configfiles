@@ -15,7 +15,7 @@ set foldlevel=-1
 set tabstop=4
 set shiftwidth=4
 "set expandtab
-colorscheme torte
+colorscheme desert
 
 "call pathogen#infect()
 syntax on
@@ -37,6 +37,7 @@ let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
 map <c-n> :NERDTreeToggle<CR>
+let g:NERDTreeNodeDelimiter="\t"
 map <c-g> :GundoToggle<CR>
 "searching
 map <leader>a: Ack!
@@ -45,14 +46,11 @@ map <leader>a: Ack!
 let g:jedi#goto_definitions_command = "<leader>g"
 
 "hilight cursor col
+set t_Co=256
 set colorcolumn=80 "limit 80 cols
-"highlight colorcolumn ctermbg=white ctermfg=black
-"set cursorcolumn
-"highlight CursorColumn ctermbg=red
-"highlight searched word
 set hlsearch
-"no need! set cursorline
-"
+highlight Search ctermbg=yellow ctermfg=black
+highlight ColorColumn ctermfg=white
 
 func StripTrailingWS()
 	%s/\s\+$//ge
