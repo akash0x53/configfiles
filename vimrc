@@ -14,7 +14,7 @@ set foldlevel=-1
 "set noexpandtab
 set tabstop=4
 set shiftwidth=4
-"set expandtab
+set expandtab
 colorscheme desert
 
 "call pathogen#infect()
