@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+git_branch(){
+	git branch 2>/dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/(\1)/"
+}
+
+#Generate Mercurial diff and save in `diffs' subdir.
+generate_diff(){
+	name=$1
+	diff_dir="diffs"
+	mkdir -p ${diff_dir}
+	branch=`hg branch`
+	now=`date +"%F_%T"`
+	export diff_file_path="${PWD}/${diff_dir}/${branch}_${now}_${name:-diff}.diff"
+	`hg diff > ${diff_file_path}`
+	[ $? -eq 0 ] && echo "created diff ${diff_file_path}"
+}
+
+check_freq() {
+	user=$1
+	hg log --user "${user}" -T "{date|isodate}\n"|cut -d ' ' -f2|cut -d: -f1|sort -n|uniq -c
+}
+
+suspendme() {
+	i3lock -i $HOME/wallpaper/anon.png && sudo pm-suspend
+}
+
+mountdev() {
+	udisksctl mount -b $1
+}
+
+genpass()
+{
+	FOR=$1
+	LEN=$2
+	shift
+	if [ "$LEN" == "" ];then
+		LEN=8
+	fi
+	paswd=$(head -c200 /dev/urandom |tr -cd [:alnum:]+[\!\@\#\$]|head -c $LEN)
+	echo "$paswd"|xclip -selection c
+	echo "Copied to clipboard"
+	if [ "$FOR" == "" ];then
+		FOR=$(date)
+	fi
+	echo "${FOR}: $paswd" >> ~/.pass
+}
