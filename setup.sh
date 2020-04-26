@@ -8,14 +8,17 @@ link_file()
     ln -s "${PWD}/${conf_file}" "$HOME/${conf_file}" &> /dev/null
     [ "$?" -eq "0" ] && echo "    ... DONE." || echo "    ... MAY ALREADY EXISTS."
 }
-# install required tools
+
+
+#-------- install required tools -------
 sudo apt install xsel $> /dev/null
 
 
-# setup gitconfig
+#----------- setup gitconfig -----------
 link_file gitconfig
 
-# setup bashrc
+
+#----------- setup bashrc --------------
 # if ~/.bashrc present already, create new .mybashrc and add "source .mybashrc" in .bashrc
 if [ -f "$HOME/.bashrc" ]; then
     if [ ! -w "$HOME/.bashrc" ]; then
@@ -29,14 +32,16 @@ else
     echo "WARNING: bashrc setup failed, system .bashrc not found."
 fi
 
-# setup vimrc
+
+#------------ setup vimrc -------------
 mkdir -p $HOME/.vim
 if [ ! -d "$HOME/.vim/autoload" ]; then
     git clone https://github.com/tpope/vim-pathogen.git $HOME/.vim/
 fi
 link_file vimrc
 
-# SSH config
+
+#------------ SSH config ---------------
 # Create key-pair for github account and add in ssh-config
 
 KFILE="$HOME/.ssh/gh"
@@ -54,3 +59,10 @@ if [ ! -f "$KFILE" ]; then
     cat "$KFILE.pub" | xsel -ib
     notify-send "Public key copied to clipboard"
 fi
+
+
+#----------- setup pyenv ----------------
+if [ ! -d "$HOME/.pyenv" ]; then
+    git clone https://github.com/pyenv/pyenv.git "$HOME/.pyenv"
+fi
+
