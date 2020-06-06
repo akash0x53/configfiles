@@ -63,8 +63,8 @@ let mapleader = ","
 nnoremap <leader>e :!pylint -E %<CR>
 noremap  <leader>w :call TrimTrailingWhiteSpaces()<CR>
 noremap <leader><space> :nohl<CR>
-
-
+noremap <leader>t :botright terminal ++close ++rows=10 bash --rcfile ~/.bash_profile<CR>
+noremap <leader>p :botright terminal ++close ++rows=10 python<CR>
 
 "----------- Functions -----------
 func TrimTrailingWhiteSpaces()
