@@ -1,3 +1,17 @@
+"----------- Functions -----------
+func TrimTrailingWhiteSpaces()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfunc
+
+func InstallVimPlug()
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+endfunc
+
 "---------- Basic ----------
 set nocompatible
 set noswapfile    "disable ugly .swp files
@@ -11,6 +25,7 @@ set lazyredraw
 set showmatch     "show matching parenthesis or similar
 
 "----------- Plugins --------------
+call InstallVimPlug()
 call plug#begin('~/.vim/plugins')
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -63,12 +78,10 @@ let mapleader = ","
 nnoremap <leader>e :!pylint -E %<CR>
 noremap  <leader>w :call TrimTrailingWhiteSpaces()<CR>
 noremap <leader><space> :nohl<CR>
-noremap <leader>t :botright terminal ++close ++rows=10 bash --rcfile ~/.bash_profile<CR>
+if has('mac') 
+    noremap <leader>t :botright terminal ++close ++rows=10 bash --rcfile ~/.bash_profile<CR>
+else
+    noremap <leader>t :botright terminal ++close ++rows=10 bash --rcfile ~/.bashrc<CR>
+endif
 noremap <leader>p :botright terminal ++close ++rows=10 python<CR>
 
-"----------- Functions -----------
-func TrimTrailingWhiteSpaces()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfunc

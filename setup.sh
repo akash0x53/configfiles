@@ -34,10 +34,7 @@ fi
 
 
 #------------ setup vimrc -------------
-mkdir -p $HOME/.vim
-if [ ! -d "$HOME/.vim/autoload" ]; then
-    git clone https://github.com/tpope/vim-pathogen.git $HOME/.vim/
-fi
+mkdir -p $HOME/.vim/undodir
 link_file vimrc
 
 
