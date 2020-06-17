@@ -5,7 +5,7 @@ link_file()
     local conf_file=$1
 
     echo -n "Setup $conf_file"
-    ln -s "${PWD}/${conf_file}" "$HOME/${conf_file}" &> /dev/null
+    ln -s "${PWD}/${conf_file}" "$HOME/.${conf_file}" &> /dev/null
     [ "$?" -eq "0" ] && echo "    ... DONE." || echo "    ... MAY ALREADY EXISTS."
 }
 
@@ -16,6 +16,7 @@ sudo apt install xsel $> /dev/null
 
 #----------- setup gitconfig -----------
 link_file gitconfig
+link_file tmux.conf
 
 
 #----------- setup bashrc --------------
