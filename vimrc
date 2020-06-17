@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 "---------- Appearance ----------
@@ -84,4 +85,8 @@ else
     noremap <leader>t :botright terminal ++close ++rows=10 bash --rcfile ~/.bashrc<CR>
 endif
 noremap <leader>p :botright terminal ++close ++rows=10 python<CR>
+map <C-n> :NERDTreeToggle<CR>
 
+"----------- On Startup -----------
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
