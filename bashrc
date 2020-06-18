@@ -131,6 +131,12 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 #export LIBGL_ALWAYS_SOFTWARE=1
 
+#FZF options
+export FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --preview \
+    'head -100 {}' --info=inline"
+export FZF_DEFAULT_COMMAND="ag --literal --files-with-matches --nocolor \
+    --hidden -g "" --ignore '.git'"
+
 
 #hour=$(date +%H)
 #if (($hour > 18));then

@@ -31,6 +31,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
+"Plug 'kien/ctrlp'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 "---------- Appearance ----------
@@ -59,7 +61,7 @@ set softtabstop=4 "remove tab by backspace even expandtab set
 
 "tab-spaces visualisation
 set list
-set listchars=tab:>-
+set listchars=tab:>·,trail:·
 set textwidth=79 "wrap after 79 char
 
 filetype indent on "load file type specific indent files from ~/.vim/indent/XXX.vim
@@ -86,6 +88,7 @@ else
 endif
 noremap <leader>p :botright terminal ++close ++rows=10 python<CR>
 map <C-n> :NERDTreeToggle<CR>
+map <C-p> :FZF<CR>
 
 "----------- On Startup -----------
 autocmd StdinReadPre * let s:std_in=1
