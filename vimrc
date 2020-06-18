@@ -90,6 +90,13 @@ noremap <leader>p :botright terminal ++close ++rows=10 python<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-p> :FZF<CR>
 
+"----------- FZF ------------
+if executable('ag')
+    set grepprg='ag\ --nocolor\ --nogroup'
+    let $FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor -g ""'
+    let $FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --preview 'head -100 {}' --info=inline"
+endif
+
 "----------- On Startup -----------
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
