@@ -134,8 +134,8 @@ export LANGUAGE=en_US.UTF-8
 #FZF options
 export FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --preview \
     'head -100 {}' --info=inline"
-export FZF_DEFAULT_COMMAND="ag --literal --files-with-matches --nocolor \
-    --hidden -g "" --ignore '.git'"
+export FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor \
+    --hidden -g ""'
 
 
 #hour=$(date +%H)
