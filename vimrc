@@ -56,6 +56,7 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-wombat-scheme'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "---------- Appearance ----------
@@ -104,6 +105,9 @@ let mapleader = ","
 nnoremap <leader>e :!pylint -E %<CR>
 noremap  <leader>w :call TrimTrailingWhiteSpaces()<CR>
 noremap <leader><space> :nohl<CR>
+nnoremap gb :Git blame<CR>
+nnoremap gd :Git diff %<CR>
+nnoremap gc :Git commit %<CR>
 execute "noremap <leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
 execute "noremap <leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
 map <C-n> :NERDTreeToggle<CR>
