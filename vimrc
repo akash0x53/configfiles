@@ -38,6 +38,11 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+function ToggleLineNumber()
+    execute "set number!"
+    execute "set relativenumber!"
+endfunction
+
 "---------- Basic ----------
 set nocompatible
 set noswapfile    "disable ugly .swp files
@@ -115,6 +120,7 @@ noremap <leader><space> :nohl<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gd :Git diff %<CR>
 nnoremap <leader>gc :Git commit %<CR>
+map <silent><F3> :call ToggleLineNumber()<CR>
 execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
 execute "noremap <silent><leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
 map <C-n> :NERDTreeToggle<CR>
