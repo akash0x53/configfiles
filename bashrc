@@ -125,6 +125,10 @@ export PATH=$PATH:$JAVA_HOME
 # pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+#nodejs
+export PATH="$PATH:/opt/node-v12.18.0-linux-x64/bin/"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
