@@ -68,7 +68,7 @@ call plug#end()
 
 "---------- Appearance ----------
 set laststatus=2 "show filename in status bar
-colorscheme wombat
+colorscheme gruvbox
 set background=dark
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 "80 column color
@@ -141,7 +141,7 @@ let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-java', 'coc-pyth
 set hidden
 set updatetime=300
 set shortmess+=c
-set signcolumn=number
+set signcolumn=auto
 
 "--- use <TAB> to trigger completion
 inoremap <silent><expr> <TAB>
