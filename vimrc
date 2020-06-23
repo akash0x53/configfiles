@@ -43,6 +43,11 @@ function ToggleLineNumber()
     execute "set relativenumber!"
 endfunction
 
+function OpenFZF()
+    if argc() == 0
+        exe 'FZF'
+    endif
+endfunction
 "---------- Basic ----------
 set nocompatible
 set noswapfile    "disable ugly .swp files
@@ -66,6 +71,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 "Plug 'kien/ctrlp'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'tpope/vim-fugitive'
@@ -73,7 +79,7 @@ call plug#end()
 
 "---------- Appearance ----------
 set laststatus=2 "show filename in status bar
-colorscheme wombat
+colorscheme gruvbox
 set background=dark
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 "80 column color
@@ -116,6 +122,7 @@ set hlsearch
 let mapleader = ","
 nnoremap <leader>e :!pylint -E %<CR>
 noremap  <leader>w :call TrimTrailingWhiteSpaces()<CR>
+noremap  <silent><leader>n :NERDTreeFind<CR>
 noremap <leader><space> :nohl<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gd :Git diff %<CR>
@@ -125,6 +132,7 @@ execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --r
 execute "noremap <silent><leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
 map <C-n> :NERDTreeToggle<CR>
 map <C-p> :FZF<CR>
+map :vcopy :0r ~/.vim/vcopy.txt
 
 command! -nargs=1 Config :call OpenConfigFile(<f-args>)
 command! -nargs=0 Reload :source $MYVIMRC
@@ -135,6 +143,7 @@ if executable('ag')
     let $FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor -g ""'
     let $FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --info=inline"
 endif
+autocmd VimEnter * call OpenFZF() 
 
 "----------- On Startup -----------
 "autocmd StdinReadPre * let s:std_in=1
@@ -143,10 +152,10 @@ endif
 "
 "----------- CoC vim Configs ----------
 "
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-java', 'coc-python', 'coc-clangd']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-java', 'coc-python', 'coc-clangd', 'coc-vimlsp']
 set hidden
 set updatetime=300
-set shortmess+=c
+set shortmess+=cat
 set signcolumn=number
 
 "--- use <TAB> to trigger completion
@@ -264,5 +273,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
 
