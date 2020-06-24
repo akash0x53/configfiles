@@ -127,6 +127,8 @@ noremap <leader><space> :nohl<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gd :Git diff %<CR>
 nnoremap <leader>gc :Git commit %<CR>
+nnoremap <leader>b :Buffers<CR>
+
 map <silent><F3> :call ToggleLineNumber()<CR>
 execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
 execute "noremap <silent><leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
