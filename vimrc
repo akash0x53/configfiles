@@ -43,11 +43,6 @@ function ToggleLineNumber()
     execute "set relativenumber!"
 endfunction
 
-function OpenFZF()
-    if argc() == 0
-        exe 'FZF'
-    endif
-endfunction
 "---------- Basic ----------
 set nocompatible
 set noswapfile    "disable ugly .swp files
@@ -75,6 +70,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-startify'
+Plug 'ap/vim-buftabline'
 call plug#end()
 
 "---------- Appearance ----------
@@ -127,13 +124,16 @@ noremap <leader><space> :nohl<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gd :Git diff %<CR>
 nnoremap <leader>gc :Git commit %<CR>
-nnoremap <leader>b :Buffers<CR>
+
+map <C-J> :bnext<CR>
 
 map <silent><F3> :call ToggleLineNumber()<CR>
 execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
 execute "noremap <silent><leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
+
 map <C-n> :NERDTreeToggle<CR>
 map <C-p> :FZF<CR>
+
 map :vcopy :0r ~/.vim/vcopy.txt
 
 command! -nargs=1 Config :call OpenConfigFile(<f-args>)
@@ -145,7 +145,6 @@ if executable('ag')
     let $FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor -g ""'
     let $FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --info=inline"
 endif
-autocmd VimEnter * call OpenFZF() 
 
 "----------- On Startup -----------
 "autocmd StdinReadPre * let s:std_in=1
@@ -276,3 +275,10 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+
+"---------- Startify -------------
+let g:startify_lists = [
+            \ { 'header': ['   Sessions'],       'type': 'sessions' },
+            \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
+            \ { 'header': ['   MRU'],            'type': 'files' },
+            \ ]
