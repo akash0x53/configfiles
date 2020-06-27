@@ -14,7 +14,7 @@ link_file()
 sudo apt install xsel $> /dev/null
 sudo apt install fzf
 sudo apt install silversearcher-ag #the_silver_searcher for Mac
-
+sudo apt install ripgrep 
 
 #----------- setup gitconfig -----------
 link_file gitconfig
