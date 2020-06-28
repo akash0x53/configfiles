@@ -11,6 +11,8 @@ link_file()
 
 
 #-------- install required tools -------
+sudo apt update
+sudo apt install nodejs
 sudo apt install xsel $> /dev/null
 sudo apt install fzf
 sudo apt install silversearcher-ag #the_silver_searcher for Mac
