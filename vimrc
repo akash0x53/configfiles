@@ -154,7 +154,13 @@ endif
 "
 "----------- CoC vim Configs ----------
 "
-let g:coc_global_extensions = ['coc-json', 'coc-java', 'coc-python', 'coc-clangd', 'coc-vimlsp']
+let g:coc_global_extensions = [
+            \ 'coc-json', 
+            \'coc-java', 
+            \'coc-python',
+            \'coc-clangd', 
+            \'coc-vimlsp',
+            \'coc-snippets']
 set hidden
 set updatetime=300
 set shortmess+=cat
