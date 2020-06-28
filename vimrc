@@ -55,6 +55,7 @@ set showcmd       "show command at bottom bar
 set lazyredraw
 set showmatch     "show matching parenthesis or similar
 set noshowmode    "hide current Vim mode; will be available in lightlin
+
 "----------- Plugins --------------
 call InstallVimPlug()
 call plug#begin('~/.vim/plugins')
@@ -153,7 +154,7 @@ endif
 "
 "----------- CoC vim Configs ----------
 "
-let g:coc_global_extensions = ['coc-tsserver', 'coc-json', 'coc-java', 'coc-python', 'coc-clangd', 'coc-vimlsp']
+let g:coc_global_extensions = ['coc-json', 'coc-java', 'coc-python', 'coc-clangd', 'coc-vimlsp']
 set hidden
 set updatetime=300
 set shortmess+=cat
