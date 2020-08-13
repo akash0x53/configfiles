@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# First configure awscli by running "aws configure"
+# provide Access Key, Secret Key, Default region & Output format
+
+ec2_qry='Reservations[*].Instances[*].{Instance:InstanceId,AZ:Placement.AvailabilityZone,Name:Tags[?Key==`Name`]|[0].Value,State:State.Name}'
+aws_instances() {
+    region=$1
+    id=$2
+    if [ ! -z $id ]; then
+        ec2_qry='Reservations[*].Instances[*]'
+    fi
+    aws ec2 describe-instances --region "$region" \
+        --query $ec2_qry\
+        --instance-id $id\
+        --output table
+}
+
+search_instance() {
+    region=$1
+    name=$2
+    aws ec2 describe-instances \
+        --region $region\
+        --filters "Name=tag:Name,Values=$name"\
+        --output table\
+        --query $ec2_qry
+}
+
+start_instance() {
+    region=$1
+    id=$2
+    aws ec2 start-instances \
+        --instance-ids $id\
+        --region $region
+}
+
+stop_instance() {
+    region=$1
+    id=$2
+    aws ec2 stop-instances \
+        --instance-ids $id\
+        --region $region
+}
+

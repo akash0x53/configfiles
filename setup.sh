@@ -30,6 +30,7 @@ if [ -f "$HOME/.bashrc" ]; then
         echo "NOTE: .bashrc file locked"
     else
         echo "source $PWD/bashrc.funcs" >> $HOME/.bashrc
+        echo "source $PWD/awscli.funcs" >> $HOME/.bashrc
         echo "source $PWD/bashrc" >> $HOME/.bashrc
         chmod -w "$HOME/.bashrc"
     fi
