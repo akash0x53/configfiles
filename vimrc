@@ -55,6 +55,14 @@ set showcmd       "show command at bottom bar
 set lazyredraw
 set showmatch     "show matching parenthesis or similar
 set noshowmode    "hide current Vim mode; will be available in lightlin
+set spell
+
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_invert_selection='0'
+let g:gruvbox_improved_strings='1'
+let g:gruvbox_italicize_strings='1'
+let g:gruvbox_material_background = 'soft'
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 "----------- Plugins --------------
 call InstallVimPlug()
@@ -73,12 +81,15 @@ Plug 'sheerun/vim-wombat-scheme'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'ap/vim-buftabline'
+Plug 'sainnhe/gruvbox-material'
+Plug 'majutsushi/tagbar'
+
 call plug#end()
 
 "---------- Appearance ----------
 set laststatus=2 "show filename in status bar
-colorscheme gruvbox
 set background=dark
+colorscheme gruvbox
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 "80 column color
 set linebreak
@@ -125,8 +136,10 @@ noremap <leader><space> :nohl<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gd :Git diff %<CR>
 nnoremap <leader>gc :Git commit %<CR>
+nmap <F8> :TagbarToggle<CR>
 
 map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
 
 map <silent><F3> :call ToggleLineNumber()<CR>
 execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
