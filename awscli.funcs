@@ -3,7 +3,7 @@
 # First configure awscli by running "aws configure"
 # provide Access Key, Secret Key, Default region & Output format
 
-ec2_qry='Reservations[*].Instances[*].{Instance:InstanceId,Name:Tags[?Key==`Name`]|[0].Value,State:State.Name}'
+ec2_qry='Reservations[*].Instances[].{Instance:InstanceId,Name:Tags[?Key==`Name`]|[0].Value,State:State.Name}'
 aws_instances() {
     region=$1
     id=$2
@@ -46,3 +46,10 @@ aws_stop_instance() {
         --region $region
 }
 
+aws_terminate_instance() {
+    region=$1
+    id=$2
+    aws ec2 terminate-instances \
+        --instance-ids $id\
+        --region $region
+}
