@@ -1,6 +1,10 @@
+[credential "https://stash.veritas.com"]
+	helper = 
+	helper = /Users/akash.shende/bin/tok git
+
 [user]
-	email = akash0x53s@gmail.com
 	name = Akash Shende
+	email = Akash.Shende@veritas.com
 
 [core]
 	editor = vim
@@ -24,14 +28,14 @@
 	changed = yellow
 	untracked = cyan
 
-[sendemail]
-	smtpencryption = tls
-	smtpserver = smtp.gmail.com
-	smtpuser = akash0x53s@gmail.com
-	smtpserverport = 587
-	smtpsslcertpath = '/etc/ssl/certs'
-	suppresscc = self
+#[sendemail]
+#	smtpencryption = tls
+#	smtpserver = smtp.gmail.com
+#	smtpuser = akash0x53s@gmail.com
+#	smtpserverport = 587
+#	smtpsslcertpath = '/etc/ssl/certs'
+#	suppresscc = self
 [push]
 	default = matching
-[merge]
-	tool = meld
+#[merge]
+#	tool = meld

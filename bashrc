@@ -111,7 +111,8 @@ fi
 
 
 # basic command aliases
-alias ls='ls -lFsth --color="auto"'
+#alias ls='ls -lFsth --color="auto"'
+alias ls='ls -lFsth'
 alias ps='ps -f'
 alias rm='rm -i'
 alias emacs='emacs -nw'
@@ -119,13 +120,14 @@ alias fucking='sudo'
 
 # Java setup
 JDK_VERSION="1.8.0_231"
-JAVA_HOME="/opt/java/${JDK_VERSION}/bin"
+#JAVA_HOME="/opt/java/${JDK_VERSION}/bin"
+JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/"
 export PATH=$PATH:$JAVA_HOME
 
 # pyenv setup
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
 #nodejs
 export PATH="$PATH:/opt/node-v12.18.0-linux-x64/bin/"
