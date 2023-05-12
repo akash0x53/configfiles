@@ -1,4 +1,3 @@
-"----------- Platform Specific ---------
 let s:bashrc="~/.bashrc"
 let s:python="python"
 
@@ -69,16 +68,16 @@ call InstallVimPlug()
 call plug#begin('~/.vim/plugins')
 Plug 'gruvbox-community/gruvbox'
 " LSP configs
-":CocInstall coc-tsserver coc-python coc-json coc-java coc-clangd
+":CocInstall coc-tsserver coc-json coc-java coc-clangd coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
-"Plug 'kien/ctrlp'
+Plug 'kien/ctrlp'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-wombat-scheme'
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'ap/vim-buftabline'
 Plug 'sainnhe/gruvbox-material'
@@ -109,6 +108,8 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set softtabstop=4 "remove tab by backspace even expandtab set
+set backspace=indent,eol,start "backspace not working in Mac
+
 
 "tab-spaces visualisation
 set list
@@ -141,6 +142,8 @@ nmap <F8> :TagbarToggle<CR>
 map <C-J> :bnext<CR>
 map <C-K> :bprev<CR>
 
+xnoremap <leader>vc /\**\*\$<CR>
+
 map <silent><F3> :call ToggleLineNumber()<CR>
 execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
 execute "noremap <silent><leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
@@ -170,10 +173,11 @@ endif
 let g:coc_global_extensions = [
             \ 'coc-json', 
             \'coc-java', 
-            \'coc-python',
             \'coc-clangd', 
             \'coc-vimlsp',
-            \'coc-snippets']
+            \'coc-pyright' ]
+
+            "\'coc-snippets']
 set hidden
 set updatetime=300
 set shortmess+=cat

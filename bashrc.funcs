@@ -37,11 +37,18 @@ genpass()
 	if [ "$LEN" == "" ];then
 		LEN=8
 	fi
-	paswd=$(head -c200 /dev/urandom |tr -cd [:alnum:]+[\!\@\#\$]|head -c $LEN)
-	echo "$paswd"|xclip -selection c
-	echo "Copied to clipboard"
+	paswd=$(head -c200 /dev/urandom |LC_ALL=c tr -cd [:alnum:]+[\!\@\#\$]|head -c $LEN)
+    hash xclip 2> /dev/null
+    if [ "$?" == "0" ]; then
+        echo "$paswd"|xclip -selection c
+        echo "Copied to clipboard"
+    else
+        echo "Strong password generated for ${FOR} is $paswd"
+    fi
+
 	if [ "$FOR" == "" ];then
 		FOR=$(date)
 	fi
 	echo "${FOR}: $paswd" >> ~/.pass
 }
+

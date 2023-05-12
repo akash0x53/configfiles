@@ -2,8 +2,7 @@
 
 # First configure awscli by running "aws configure"
 # provide Access Key, Secret Key, Default region & Output format
-
-ec2_qry='Reservations[*].Instances[].{Instance:InstanceId,Name:Tags[?Key==`Name`]|[0].Value,State:State.Name}'
+ec2_qry='Reservations[*].Instances[].{Instance:InstanceId,Name:Tags[?Key==`Name`]|[0].Value,State:State.Name,IP:PrivateIpAddress}'
 aws_instances() {
     region=$1
     id=$2
@@ -52,4 +51,44 @@ aws_terminate_instance() {
     aws ec2 terminate-instances \
         --instance-ids $id\
         --region $region
+}
+
+stop_all_running() {
+    region=$1
+    name=$2
+
+
+    instances=$(aws ec2 describe-instances \
+        --region $region\
+        --filters Name=tag:Name,Values="*${name}*" Name=instance-state-name,Values=running\
+        --output text\
+        --query $ec2_qry)
+
+    echo -e "$instances\n"
+
+    if [ -z $name ]; then
+        echo "All running instances will be stopped! (y/n): "
+        read ans
+        if [ "$ans" != "y" ]; then
+            return
+        fi
+    fi
+
+    ids=$(echo "$instances"|awk '{print $1}')
+
+    for _id in $ids;
+    do
+        echo "Stopping $_id"
+        aws_stop_instance $region $_id
+    done
+}
+
+start_eks_cluster() {
+    name=$1
+
+    for pool in cpdata loadbalancer msdpxpool nbupool
+    do
+        echo "Starting $pool"
+        aws eks update-nodegroup-config --cluster-name $name --nodegroup-name $pool --scaling-config minSize=1,desiredSize=1
+    done
 }

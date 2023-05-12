@@ -39,3 +39,5 @@
 	default = matching
 #[merge]
 #	tool = meld
+[lfs]
+	url = https://anonymous:@nbartifactory.rsv.ven.veritas.com/artifactory/api/lfs/bnr_git_lfs
