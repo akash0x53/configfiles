@@ -55,6 +55,7 @@ set lazyredraw
 set showmatch     "show matching parenthesis or similar
 set noshowmode    "hide current Vim mode; will be available in lightlin
 set spell
+set shortmess-=S
 
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_invert_selection='0'
@@ -67,12 +68,14 @@ let g:lightline = {'colorscheme' : 'gruvbox_material'}
 call InstallVimPlug()
 call plug#begin('~/.vim/plugins')
 Plug 'gruvbox-community/gruvbox'
+Plug 'nvim-lua/plenary.nvim'
 " LSP configs
 ":CocInstall coc-tsserver coc-json coc-java coc-clangd coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
-Plug 'kien/ctrlp'
+"Plug 'kien/ctrlp'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
@@ -82,6 +85,11 @@ Plug 'mhinz/vim-startify'
 Plug 'ap/vim-buftabline'
 Plug 'sainnhe/gruvbox-material'
 Plug 'majutsushi/tagbar'
+Plug 'github/copilot.vim'
+Plug 'DanBradbury/copilot-chat.vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'christoomey/vim-tmux-navigator'
+
 
 call plug#end()
 
@@ -137,10 +145,13 @@ noremap <leader><space> :nohl<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gd :Git diff %<CR>
 nnoremap <leader>gc :Git commit %<CR>
+nnoremap <leader>cc :CopilotChatOpen<CR>
 nmap <F8> :TagbarToggle<CR>
 
 map <C-J> :bnext<CR>
 map <C-K> :bprev<CR>
+
+vmap <leader>ca <Plug>CopilotChatAddSelection
 
 xnoremap <leader>vc /\**\*\$<CR>
 
@@ -160,7 +171,7 @@ command! -nargs=0 Reload :source $MYVIMRC
 if executable('ag')
     set grepprg='ag\ --nocolor\ --nogroup'
     let $FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor -g ""'
-    let $FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --info=inline"
+    let $FZF_DEFAULT_OPTS="--multi --height 100% --layout=reverse --border --info=inline"
 endif
 
 "----------- On Startup -----------
@@ -172,11 +183,10 @@ endif
 "
 let g:coc_global_extensions = [
             \ 'coc-json', 
-            \'coc-java', 
             \'coc-clangd', 
-            \'coc-vimlsp',
-            \'coc-pyright' ]
-
+            \'coc-vimlsp' ]
+            "\'coc-pyright' ]
+            "\'coc-java', 
             "\'coc-snippets']
 set hidden
 set updatetime=300
@@ -300,9 +310,12 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
+set path+=**
+
 "---------- Startify -------------
 let g:startify_lists = [
             \ { 'header': ['   Sessions'],       'type': 'sessions' },
             \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
             \ { 'header': ['   MRU'],            'type': 'files' },
             \ ]
+

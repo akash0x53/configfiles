@@ -119,10 +119,11 @@ alias emacs='emacs -nw'
 alias fucking='sudo'
 
 # Java setup
-JDK_VERSION="1.8.0_231"
+JDK_VERSION="1.8.0_121"
 #JAVA_HOME="/opt/java/${JDK_VERSION}/bin"
 JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/"
 export PATH=$PATH:$JAVA_HOME
+export PATH="$PATH:$HOME/bin"
 
 # pyenv setup
 #export PYENV_ROOT="$HOME/.pyenv"
@@ -140,8 +141,12 @@ export LANGUAGE=en_US.UTF-8
 #FZF options
 export FZF_DEFAULT_OPTS="--height 100% --layout=reverse --border --preview \
     'head -100 {}' --info=inline"
-export FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor \
-    --hidden -g ""'
+#export FZF_DEFAULT_COMMAND='ag --literal --files-with-matches --nocolor \
+#    --hidden -g ""'
+export FZF_DEFAULT_COMMAND="fd --type f"
+
+#alias sync_diff='ts=$(date "+%s"); git diff > diff_${ts}; scp diff_${ts} rsv-dev:~/'
+alias sync_diff="git diff > /tmp/diff && scp /tmp/diff"
 
 
 #hour=$(date +%H)

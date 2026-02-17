@@ -1,0 +1,12 @@
+Include config.d/k8s
+
+# Enable multiplexing
+Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h
+    ControlPersist 10m
+
+Host	github.com
+	HostName github.com
+	IdentityFile ~/.ssh/github
+
