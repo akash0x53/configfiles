@@ -159,7 +159,7 @@ map <silent><F3> :call ToggleLineNumber()<CR>
 execute "noremap <silent><leader>t :botright terminal ++close ++rows=10 bash --rcfile ".s:bashrc."<CR>"
 execute "noremap <silent><leader>p :botright terminal ++close ++rows=10 ".s:python."<CR>"
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
 map <C-p> :FZF<CR>
 
 map :vcopy :0r ~/.vim/vcopy.txt
