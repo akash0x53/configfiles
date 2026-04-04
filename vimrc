@@ -88,7 +88,6 @@ Plug 'majutsushi/tagbar'
 Plug 'github/copilot.vim'
 Plug 'DanBradbury/copilot-chat.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'christoomey/vim-tmux-navigator'
 
 
 call plug#end()
